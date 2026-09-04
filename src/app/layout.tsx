@@ -37,7 +37,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${dmSans.variable}`}>
-      <body className="antialiased">
+      <body className="antialiased relative">
+        <div className="ambient-glow" aria-hidden="true" />
         <div className="grain" aria-hidden="true" />
         <StoreShell>{children}</StoreShell>
       </body>

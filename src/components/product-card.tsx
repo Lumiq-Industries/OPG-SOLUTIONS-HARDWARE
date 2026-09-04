@@ -12,7 +12,7 @@ export function ProductCard({ product }: { product: Product }) {
   const isQuote = product.price === 0;
 
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-card transition hover:border-gold/25">
+    <article className="group flex flex-col overflow-hidden rounded-2xl glass-card transition hover:border-gold/25">
       <Link href={`/product/${product.slug}`} className="relative aspect-square overflow-hidden bg-white/[0.03]">
         <Image
           src={product.image}

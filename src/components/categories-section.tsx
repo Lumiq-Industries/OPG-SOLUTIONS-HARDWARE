@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, Droplets, Grid3X3, Layers, Paintbrush, Wrench, Zap } from "lucide-react";
 import { categories } from "@/lib/products";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 const iconMap = {
   zap: Zap,
@@ -16,7 +17,7 @@ export function CategoriesSection() {
   return (
     <section className="py-24 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-12 max-w-xl">
+        <ScrollReveal className="mb-12 max-w-xl">
           <p className="text-xs tracking-[0.35em] uppercase text-gold mb-3">Shop by Category</p>
           <h2 className="font-serif text-3xl text-white sm:text-4xl">
             Everything you need, beautifully organised
@@ -25,16 +26,16 @@ export function CategoriesSection() {
             Six dedicated departments — calm layouts, clear navigation, and products placed
             exactly where you expect them.
           </p>
-        </div>
+        </ScrollReveal>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {categories.map((cat) => {
+          {categories.map((cat, i) => {
             const Icon = iconMap[cat.icon as keyof typeof iconMap] ?? Wrench;
             return (
+              <ScrollReveal key={cat.slug} delay={i * 0.06}>
               <Link
-                key={cat.slug}
                 href={`/shop/${cat.slug}`}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-card transition hover:border-gold/30"
+                className="group relative overflow-hidden rounded-2xl glass-card transition hover:border-gold/30 block h-full"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
@@ -69,6 +70,7 @@ export function CategoriesSection() {
                   </div>
                 </div>
               </Link>
+              </ScrollReveal>
             );
           })}
         </div>
